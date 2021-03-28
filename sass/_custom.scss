@@ -1,0 +1,156 @@
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Poppins', Helvetica, sans-serif;
+  background-color: hsl(0deg, 0%, 96%);
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 110rem;
+}
+
+/* Character */
+
+.character {
+  padding: 6rem 0;
+  transition: all 300ms ease;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 4rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    overflow: hidden;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__info {
+    background-color: hsl(0deg, 0%, 100%);
+  }
+  
+  &__name {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.8rem;
+    padding-top: 2rem;
+    color: hsl(0deg, 0%, 20%);
+  }
+
+  &__location {
+    display: block;
+    text-align: center;
+    padding: 1rem 0;
+    padding-bottom: 2rem;
+  }
+
+  &__button {
+    height: 5rem;
+    border: none;
+    background-color: #526e2dff;
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    outline: none;
+  }
+}
+
+/* Loading */
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fb6467ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms ease;
+
+  &__text {
+    color: #fff;
+    font-weight: 700;
+    font-size: 4rem;
+  }
+}
+
+/* Character Page */
+
+.character-page {
+  padding: 6rem 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-column-gap: 6rem;
+  }
+
+  &__title {
+    display: block;
+    background-color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.8rem;
+    padding: 2rem 0;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: hsl(0deg, 0%, 20%);
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+
+    span {
+      font-weight: 400;
+      text-transform: initial;
+    }
+  }
+
+  &__back {
+    border: none;
+    background-color: #82491eff;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    display: inline-block;
+    padding: 1rem 3rem;
+    margin-bottom: 4rem;
+    font-size: 1.2rem;
+    outline: none;
+    cursor: pointer;
+  }
+}
