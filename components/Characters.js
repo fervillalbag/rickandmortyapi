@@ -7,6 +7,7 @@ export default function Characters({ characters }) {
 
   return (
     <section className="character container">
+      <h1 className="character__title">Rick and Morty API</h1>
       <div className="character__grid">
         {results.map(character => (
           <CharacterItem
