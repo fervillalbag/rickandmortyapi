@@ -119,7 +119,18 @@ body {
   &__grid {
     display: grid;
     grid-template-columns: min-content 1fr;
-    grid-column-gap: 6rem;
+    column-gap: 6rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+    }
+  }
+
+  &__image {
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   &__title {
@@ -139,6 +150,10 @@ body {
     display: block;
     font-size: 2rem;
     margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      margin-bottom: 2rem;
+    }
 
     span {
       font-weight: 400;
