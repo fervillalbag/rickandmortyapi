@@ -1,13 +1,14 @@
 
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import SeoTemplate from '../components/SeoTemplate'
 import Characters from '../components/Characters'
-import { useQuery, gql } from '@apollo/client'
 import Loading from '../components/Loading'
+import { useQuery, gql } from '@apollo/client'
+import { useRouter } from 'next/router'
 
 const GET_ALL_CHARACTERS = gql`
-  query characters {
-    characters {
+  query characters($page: Int) {
+    characters(page: $page) {
       results {
         id
         name
@@ -22,14 +23,32 @@ const GET_ALL_CHARACTERS = gql`
 
 export default function Index() {
 
-  const { data, loading } = useQuery(GET_ALL_CHARACTERS)
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const router = useRouter()
+  const { query: { page } } = router
+
+  useEffect(() => {
+    setCurrentPage(currentPage)
+  }, [currentPage])
+
+  const { data, loading } = useQuery(GET_ALL_CHARACTERS, {
+    variables: {
+      page: currentPage
+    }
+  })
+
   if (loading) return <Loading />
   const { characters } = data
 
   return (
     <Fragment>
       <SeoTemplate />
-      <Characters characters={characters} />
+      <Characters
+        characters={characters}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </Fragment>
   )
 }

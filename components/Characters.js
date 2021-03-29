@@ -1,9 +1,21 @@
 
 import CharacterItem from './CharacterItem'
 
-export default function Characters({ characters }) {
+export default function Characters({ characters, setCurrentPage, currentPage }) {
 
   const { results } = characters
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
+      scrollTo(0, 0)
+    }
+  }
+
+  const handleNext = () => {
+    setCurrentPage(currentPage + 1)
+    scrollTo(0, 0)
+  }
 
   return (
     <section className="character container">
@@ -15,6 +27,23 @@ export default function Characters({ characters }) {
             character={character}
           />
         ))}
+      </div>
+
+      <div className="character__footer">
+        <button
+          type="button"
+          className="character__pagination"
+          onClick={handlePrev}
+        >
+          Anterior
+        </button>
+        <button
+          type="button"
+          className="character__pagination"
+          onClick={handleNext}
+        >
+          Siguiente
+        </button>
       </div>
     </section>
   )
